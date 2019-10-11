@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PLAYFLIX</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/playflix.css" type="text/css">	    
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.3/plyr.css" />
+    <style>
+      .plyr__captions .plyr__caption {
+          background: unset!important;
+          border-radius: 2px;
+          -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+          line-height: 100%;
+          padding: .2em .5em;
+          white-space: pre-wrap;
+          font-size: 60px!important;
+          font-weight: 600!important;
+          color: #ffca00!important;
+          background: linear-gradient(to bottom, rgba(255,204,0,1) 0%, rgba(248,80,50,1) 100%);
+          -webkit-background-clip: text;         
+          text-shadow: 0px 2px 3px #000000;
+          -webkit-text-stroke: 1px black;
+          text-shadow:
+            3px 3px 0 #000,
+            -1px -1px 0 #000,  
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;          
+      }    
+    </style>
+  </head>
+  <body>
+    <div id="player-container">      
+    </div>
+    <div class="bg-overlay"></div>
+    <div id="movies" class="contentContainer row" style="margin-top: 50px;"></div>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;};</script>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/catalogue.js"></script>
+    <script type="text/javascript" src="js/magic.js"></script>    
+    <script type="text/javascript" src="js/functions.js"></script>
+    <!--<script type="text/javascript" src="js/jquery.srt.js"></script>-->
+    <script type="text/javascript" src="https://cdn.plyr.io/3.5.3/plyr.js"></script>
+    <script type="text/javascript" src="js/bundle.min.js"></script>
+  </body>
+</html>
+
