@@ -18,6 +18,7 @@ $(document).keyup(function (e){
 });
 
 function openNewWindow(hash, imdb) {
+  $("#preloader").css("display","block");
   var client = new WebTorrent();
 
   var torrentId = hash
@@ -47,10 +48,12 @@ function openNewWindow(hash, imdb) {
           file.renderTo('video#player');
           $("#player").append('<track id="player-subtitle" kind="subtitles" label="Español" src="'+subtitles.es.vtt+'" srclang="es" default />');
           $("#player").append('<track id="player-subtitle" kind="subtitles" label="English" src="'+subtitles.en.vtt+'" srclang="en" default />');
+          $("#preloader").css("display","none");
         } else {
           $('#player-container').css('display','block');
           $("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
           file.renderTo('video#player');
+          $("#preloader").css("display","none");
         }            
     });          
   })

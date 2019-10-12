@@ -13,6 +13,17 @@ We are using Node.js v12.0.0, NPM 6.4.1 Chromium v73.0.3683.119 and Electron v5.
     - npm WARN bootstrap@4.3.1 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer  dependencies yourself.       
     - npm WARN bootstrap@4.3.1 requires a peer of popper.js@^1.14.7 but none is installed. You must install peer dependencies yourself.      
     - npm WARN netfilmx@0.0.1 license should be a valid SPDX license expression
+- Optimize the `package.json` file dependencies with only the necessary.
+- Test only SRT subs!
+- Make a loader after clicking
+- Make a Play icon on hover
+- Make preloader hidden after movies load
+- Make a PROVIDER manager
+- Make Search & filter functions
+- Make a tracker manager
+- Make a CAPTION MANAGER `// #ToDo case "http://api.ysubs.com/" // http://sub.torrentsapi.com/list?imdb= // http://api.yifysubtitles.com/subs/`
+- Make a TOR manager `// var tor_url = // ".link .city .to .cab .glass" #ToDo`
+- Make a PROXY manager `// https://www.test-cors.org/ // https://jsfiddle.net/1d8cwqo0/1/ // https://jsfiddle.net/Ln47kyt2/3/`
 
 ## Install
 

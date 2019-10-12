@@ -3,20 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>Netfilmx, just watch!</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/netfilmx.css" type="text/css">	    
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/netfilmx.css">	    
   </head>
   <body>
+		<!-- PRELOADER -->
+		<div id="preloader"><div class="cssload-container"><div class="cssload-whirlpool"></div></div></div>
+    <!-- /PRELOADER -->    
     <div id="player-container"></div>
     <div class="bg-overlay"></div>
     <div id="movies" class="contentContainer row" style="margin-top: 50px;"></div>
     <script>if (typeof module === 'object') {window.module = module; module = undefined;};</script>
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="js/catalogue.js"></script>
     <script type="text/javascript" src="js/magic.js"></script>    
     <script type="text/javascript" src="js/functions.js"></script>
-    <!--<script type="text/javascript" src="js/jquery.srt.js"></script>-->
     <script type="text/javascript" src="js/bundle.min.js"></script>
     <script>console.log("We are using Node.js v"+process.versions.node+" Chromium v"+process.versions.chrome+" and Electron v"+process.versions.electron);</script>
   </body>
