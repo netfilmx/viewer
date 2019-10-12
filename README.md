@@ -1,13 +1,18 @@
-# playflix
+# Netfilmx
 
-playflix
+We are using Node.js v12.0.0, NPM 6.4.1 Chromium v73.0.3683.119 and Electron v5.0.0
 
 ## To Do:
 
 - Put the nodejs version in the package.json and the readme.me
 - Make a search input and a result view
-- documentation of the following code:
-  - We are using Node.js <script>document.write(process.versions.node)</script>, Chromium <script>document.write(process.versions.chrome)</script>, and Electron <script>document.write(process.versions.electron)</script>.
+- Make a KEY MANAGER and add to the `.gitignore`
+- Replace the LICENSE for "my license"
+- Solve KEY of OpenSubtitle `var OpenSubtitles = new OS('TemporaryUserAgent');`
+- Solve this ones:
+    - npm WARN bootstrap@4.3.1 requires a peer of jquery@1.9.1 - 3 but none is installed. You must install peer  dependencies yourself.       
+    - npm WARN bootstrap@4.3.1 requires a peer of popper.js@^1.14.7 but none is installed. You must install peer dependencies yourself.      
+    - npm WARN netfilmx@0.0.1 license should be a valid SPDX license expression
 
 ## Install
 

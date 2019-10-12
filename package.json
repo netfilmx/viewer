@@ -1,26 +1,30 @@
 {
-  "name": "electron-quick-start",
-  "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "name": "netfilmx",
+  "version": "0.0.1",
+  "description": "Just watch!",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/netfilmx",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Netfilmx",
+    "Films",
+    "Movies",
+    "TV"
   ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
+  "author": "barbanarca",
+  "license": "The Unlicense",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.4.1"
+  },
   "devDependencies": {
     "electron": "^5.0.0",
     "electron-builder": "^20.40.2"
   },
   "dependencies": {
+    "bootstrap": "^4.3.1",
     "opensubtitles-api": "^5.0.1",
     "osdb-hash": "^0.1.1",
     "srt-to-text": "^1.0.3",
