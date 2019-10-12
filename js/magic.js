@@ -6,7 +6,13 @@ var srt2vtt = require('./node_modules/srt-to-vtt')
 var fs = require('fs')
 const vttedit = require('vtt-live-edit');
 var WebTorrent = require('./node_modules/webtorrent-hybrid-electron');
-var OSDbHash = require('osdb-hash');      
+var OSDbHash = require('osdb-hash');
+
+$(document).ready(function() {
+	setTimeout(function() {
+		$("#preloader").css("display","none")
+	}, 5000);
+});
 
 $(document).keyup(function (e){
   if (e.keyCode == 107) {
