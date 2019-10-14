@@ -3,8 +3,11 @@
   "version": "0.0.1",
   "description": "Just watch!",
   "main": "main.js",
+  "productName": "netfilmx",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "repository": "https://github.com/netfilmx",
   "keywords": [
@@ -15,13 +18,41 @@
   ],
   "author": "barbanarca",
   "license": "UNLICENSED",
+  "build": {
+    "appId": "netfilmx",
+    "asar": true,
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "NSIS",
+      "icon": "build/icon.ico"
+    }
+  },
   "engines": {
     "node": ">=12.0.0",
     "npm": ">=6.4.1"
   },
   "devDependencies": {
-    "electron": "^5.0.0",
-    "electron-builder": "^20.40.2"
+    "electron": "^6.0.12",
+    "electron-builder": "^21.2.0"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",

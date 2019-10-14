@@ -4,6 +4,11 @@ We are using Node.js v12.0.0, NPM 6.4.1 Chromium v73.0.3683.119 and Electron v5.
 
 ## To Do:
 
+- Integrar webpacketizacion
+- Optimizar webpack
+- SASSear los estilos
+- Modularizar los JS
+- Brandear
 - Put the nodejs version in the package.json and the readme.me
 - Make a search input and a result view
 - Make a KEY MANAGER and add to the `.gitignore`
@@ -38,6 +43,19 @@ npm install
 npm start
 ```
 --------------------------
+
+## Build
+
+Installer
+```bash
+npm run dist
+```
+
+Webpack
+
+```bash
+npx webpack --config webpack.config.js
+```
 
 # electron-quick-start
 
