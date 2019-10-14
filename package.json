@@ -55,8 +55,6 @@
     "electron-builder": "^21.2.0"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.4.1",
     "opensubtitles-api": "^5.0.1",
     "osdb-hash": "^0.1.1",
     "popper.js": "^1.15.0",

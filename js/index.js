@@ -1,3 +1,70 @@
+// REQUIRES
+require('./renderer.js'); // You can also require other files to run in this process
+var OS = require('./node_modules/opensubtitles-api');
+var OpenSubtitles = new OS('TemporaryUserAgent');
+// var srt2vtt = require('./node_modules/srt-to-vtt')
+var fs = require('fs')
+const vttedit = require('vtt-live-edit');
+var WebTorrent = require('./node_modules/webtorrent-hybrid-electron');
+var OSDbHash = require('osdb-hash');
+
+$(document).ready(function() {
+	setTimeout(function() {
+		$("#preloader").css("display","none")
+	}, 5000);
+});
+
+$(document).keyup(function (e){
+  if (e.keyCode == 107) {
+    vttedit.addOffset('player', 0.5);    // Add 500ms offset
+  }
+  if (e.keyCode == 109) {
+    vttedit.removeOffset('player', 0.5); // Remove 500ms offset
+  }
+});
+
+function openNewWindow(hash, imdb) {
+  $("#preloader").css("display","block");
+  var client = new WebTorrent();
+
+  var torrentId = hash
+  var movieId = imdb
+
+  client.add(torrentId, function (torrent) { // Torrents can contain many files. Let's use the first.
+    var file = torrent.files.find(function (file) {
+      return file.name.endsWith('.mp4')
+    })
+
+    var osdb = new OSDbHash(file);
+    if (osdb) {
+      var osdbName = osdb.filename.name;
+      var osdbLenght = osdb.filename.length;
+    }   
+
+    OpenSubtitles.search({
+      sublanguageid: 'es',        // Can be an array.join, 'all', or be omitted.
+      extensions: ['srt', 'vtt'],  // Accepted extensions, defaults to 'srt'. {{subtitles.es.utf8}}
+      imdbid: movieId,           // 'tt528809' is fine too.
+      filename: osdbName,
+      filesize: osdbLenght
+    }).then(function (subtitles) {
+        if(subtitles){
+          $('#player-container').css('display','block');
+          $("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
+          file.renderTo('video#player');
+          $("#player").append('<track id="player-subtitle" kind="subtitles" label="Español" src="'+subtitles.es.vtt+'" srclang="es" default />');
+          $("#player").append('<track id="player-subtitle" kind="subtitles" label="English" src="'+subtitles.en.vtt+'" srclang="en" default />');
+          $("#preloader").css("display","none");
+        } else {
+          $('#player-container').css('display','block');
+          $("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
+          file.renderTo('video#player');
+          $("#preloader").css("display","none");
+        }            
+    });          
+  })
+}
+
 	// TRACKERS
 	var trackers = "&tr=udp:\/\/open.demonii.com:1337\/announce&tr=http:\/\/tracker.trackerfix.com\/announce&tr=udp:\/\/9.rarbg.to:2710&tr=udp:\/\/9.rarbg.me:2710&tr=udp:\/\/exodus.desync.com:6969&tr=udp:\/\/tracker.coppersurfer.tk:6969&tr=udp:\/\/tracker.leechers-paradise.org:6969&tr=udp:\/\/tracker.openbittorrent.com:80&tr=udp:\/\/glotorrents.pw:6969\/announce&tr=udp:\/\/tracker.opentrackr.org:1337\/announce&tr=udp:\/\/torrent.gresille.org:80\/announce&tr=udp:\/\/p4p.arenabg.com:1337&tr=udp:\/\/tracker.internetwarriors.net:1337&tr=http:\/\/www.siambt.com\/announce.php&tr=http:\/\/bttracker.crunchbanglinux.org:6969\/announce&tr=http:\/\/www.eddie4.nl:6969\/announce&tr=http:\/\/mgtracker.org:2710\/announce&tr=wss:\/\/tracker.btorrent.xyz&tr=wss:\/\/tracker.fastcast.nz&tr=wss:\/\/tracker.openwebtorrent.com&tr=http:\/\/open.nyaatorrents.info:6544\/announce&tr=http:\/\/9.rarbg.com:2710\/announceUDP&tr=http:\/\/announce.torrentsmd.com:6969\/announceUDP&tr=udp:\/\/castradio.net:6969\/announceUDP&tr=http:\/\/castradio.net:6969\/announceUDP&tr=udp:\/\/tracker.coppersurfer.tk:6969\/announceUDP&tr=http:\/\/tracker.coppersurfer.tk:6969\/announceUDP&tr=udp:\/\/coppersurfer.tk:6969\/announceUDP&tr=http:\/\/coppersurfer.tk:6969\/announceUDP&tr=udp:\/\/open.demonii.com:1337\/announceUDP&tr=udp:\/\/open.demonii.com:6969\/announceUDP&tr=http:\/\/open.demonii.com:1337\/announceUDP&tr=http:\/\/open.demonii.com:6969\/announceUDP&tr=udp:\/\/exodus.desync.com:80\/announceUDP&tr=udp:\/\/exodus.desync.com:6969\/announceUDP&tr=udp:\/\/tracker.glotorrents.com:6969\/announceUDP&tr=http:\/\/tracker.glotorrents.com:6969\/announceUDP&tr=udp:\/\/tracker.leechers-paradise.org:80\/announceUDP&tr=udp:\/\/tracker.leechers-paradise.org:6969\/announceUDP&tr=http:\/\/tracker.leechers-paradise.org:80\/announceUDP&tr=http:\/\/tracker.leechers-paradise.org:6969\/announceUDP&tr=udp:\/\/tracker.openbittorrent.com:80\/announceUDP&tr=udp:\/\/tracker.openbittorrent.com:6969\/announceUDP&tr=http:\/\/tracker.openbittorrent.com:80\/announceUDP&tr=http:\/\/tracker.openbittorrent.com:6969\/announceUDP&tr=udp:\/\/tracker.publicbt.com:80\/announceUDP&tr=udp:\/\/tracker.publicbt.com:6969\/announceUDP&tr=http:\/\/tracker.publicbt.com:80\/announceUDP&tr=http:\/\/tracker.publicbt.com:6969\/announceUDP&tr=udp:\/\/tracker.x4w.co:6969\/announceUDP&tr=http:\/\/tracker.x4w.co:6969\/announceUDP";
 
