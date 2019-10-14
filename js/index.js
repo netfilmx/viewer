@@ -1,11 +1,8 @@
 // REQUIRES
-require('./renderer.js'); // You can also require other files to run in this process
-var OS = require('./node_modules/opensubtitles-api');
+var OS = require('opensubtitles-api');
 var OpenSubtitles = new OS('TemporaryUserAgent');
-// var srt2vtt = require('./node_modules/srt-to-vtt')
-var fs = require('fs')
 const vttedit = require('vtt-live-edit');
-var WebTorrent = require('./node_modules/webtorrent-hybrid-electron');
+var WebTorrent = require('webtorrent-hybrid-electron');
 var OSDbHash = require('osdb-hash');
 
 $(document).ready(function() {
