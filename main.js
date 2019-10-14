@@ -14,7 +14,7 @@ function createWindow () {
   })
 
   mainWindow.show()
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile('dist/index.html')
   mainWindow.setMenuBarVisibility(false)
   mainWindow.on('closed', function () {
     mainWindow = null

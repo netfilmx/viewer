@@ -22,6 +22,7 @@ We are using Node.js v12.0.0, NPM 6.4.1 Chromium v73.0.3683.119 and Electron v5.
 - Test only SRT subs!
 - Make a loader after clicking
 - Make a Play icon on hover
+- Make a filetype manager (for torrents with mkv, etc.)
 - Make preloader hidden after movies load
 - Make a PROVIDER manager
 - Make Search & filter functions
