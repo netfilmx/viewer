@@ -52,12 +52,6 @@ Installer
 npm run dist
 ```
 
-Webpack
-
-```bash
-npx webpack --config webpack.config.js
-```
-
 # electron-quick-start
 
 **Clone and run for a quick way to see Electron in action.**
