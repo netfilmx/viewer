@@ -4,8 +4,8 @@ We are using Node.js v12.0.0, NPM 6.4.1 Chromium v73.0.3683.119 and Electron v5.
 
 ## To Do:
 
-- Integrar webpacketizacion
-- Optimizar webpack
+- Unjquerear codigo
+- Try this: https://medium.com/@yogeshkumarr/production-ready-electron-app-using-react-and-parcel-web-bundler-74dcda63f148 | https://github.com/kumarryogeshh/electron-react-parcel-boilerplate
 - SASSear los estilos
 - Modularizar los JS
 - Brandear
