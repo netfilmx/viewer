@@ -4,14 +4,16 @@ var OpenSubtitles = new OS('TemporaryUserAgent');
 const vttedit = require('vtt-live-edit');
 var WebTorrent = require('webtorrent-hybrid-electron');
 var OSDbHash = require('osdb-hash');
+var jQuery = $ = require('jquery');
 
-$(document).ready(function() {
+jQuery(document).ready(function() {
 	setTimeout(function() {
-		$("#preloader").css("display","none")
+		jQuery("#preloader").css("display","none")
 	}, 5000);
 });
 
-$(document).keyup(function (e){
+
+jQuery(document).keyup(function (e){
   if (e.keyCode == 107) {
     vttedit.addOffset('player', 0.5);    // Add 500ms offset
   }
@@ -21,7 +23,7 @@ $(document).keyup(function (e){
 });
 
 function openNewWindow(hash, imdb) {
-  $("#preloader").css("display","block");
+  jQuery("#preloader").css("display","block");
   var client = new WebTorrent();
 
   var torrentId = hash
@@ -46,17 +48,17 @@ function openNewWindow(hash, imdb) {
       filesize: osdbLenght
     }).then(function (subtitles) {
         if(subtitles){
-          $('#player-container').css('display','block');
-          $("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
+          jQuery('#player-container').css('display','block');
+          jQuery("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
           file.renderTo('video#player');
-          $("#player").append('<track id="player-subtitle" kind="subtitles" label="Español" src="'+subtitles.es.vtt+'" srclang="es" default />');
-          $("#player").append('<track id="player-subtitle" kind="subtitles" label="English" src="'+subtitles.en.vtt+'" srclang="en" default />');
-          $("#preloader").css("display","none");
+          jQuery("#player").append('<track id="player-subtitle" kind="subtitles" label="Español" src="'+subtitles.es.vtt+'" srclang="es" default />');
+          jQuery("#player").append('<track id="player-subtitle" kind="subtitles" label="English" src="'+subtitles.en.vtt+'" srclang="en" default />');
+          jQuery("#preloader").css("display","none");
         } else {
-          $('#player-container').css('display','block');
-          $("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
+          jQuery('#player-container').css('display','block');
+          jQuery("#player-container").html('<video scr="" poster="" id="player" preload="auto" autoplay="autoplay" playsinline controls></video>');
           file.renderTo('video#player');
-          $("#preloader").css("display","none");
+          jQuery("#preloader").css("display","none");
         }            
     });          
   })
@@ -126,7 +128,7 @@ function openNewWindow(hash, imdb) {
 		html+='<div id="movie-box-'+'" class="movie-box col-lg-2 col-md-3 col-sm-6 col-xs-12" style="position:relative;float:left;">';
 		html+='<img id="img-movie-box-'+hash+'" class="hover-luz" title="'+title+'" alt="'+title+'" src="'+poster+'" onclick="openNewWindow(&#39;'+magnet+'&#39;,&#39;'+imdb+'&#39;)"/>';
 		html+='<div id="movie-rating-star-'+imdb+'" class="movie_rating_star"></div></div>';
-		$('#movies').append(html);
+		jQuery('#movies').append(html);
 	}	
 
 	function loadMore() {
@@ -208,7 +210,7 @@ function openNewWindow(hash, imdb) {
 				catalogue(hash, imdb, magnet, title, rating, poster, genre, background, api_url, provider, proxy, content_value);
 				var moviesXrow = 5;
 				if (i % moviesXrow == 0 )  {
-					$('#movies').append("<div></div>");
+					jQuery('#movies').append("<div></div>");
 				}
 				else {}
 				i++;				
@@ -219,11 +221,11 @@ function openNewWindow(hash, imdb) {
 	}; // EOF loadMore()
 
 	// PAGINATION
-	$(window).scroll(function() {
-		if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+	jQuery(window).scroll(function() {
+		if(jQuery(window).scrollTop() + jQuery(window).height() > jQuery(document).height() - 100) {
 		loadMore();
 		}
 	});
-	$(document).ready(function() {
+	jQuery(document).ready(function() {
 		loadMore();
 	});
